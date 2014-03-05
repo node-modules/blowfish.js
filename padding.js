@@ -18,17 +18,17 @@ var blockSize = 8;
  * the padding bytes
  */
 exports.padWithLen = function (input, off, len) {
-  if (input === null) {
-    return;
-  }
+	if (input === null) {
+		return;
+	}
 
-  var paddingOctet = new Buffer([len & 0xff]);
-  
-  for (var i = 0; i < len; i++) {
-    input += paddingOctet;
-  }
-  
-  return input;
+	var paddingOctet = new Buffer([len & 0xff]);
+	
+	for (var i = 0; i < len; i++) {
+		input += paddingOctet;
+	}
+	
+	return input;
 }
 
 /**
@@ -45,31 +45,31 @@ exports.padWithLen = function (input, off, len) {
  * not properly padded
  */
 exports.unpad = function (input) {
-  if (input == null) { // this can happen if input is really a padded buffer
-    return 0;
-  }
-  
-  if (!Buffer.isBuffer(input)) {
-    input = new Buffer(input);
-  }
-  
-  var len = input.length;
-  var lastByte = input[len - 1];
-  var padValue = lastByte & 0x0ff;
-  
-  if ((padValue < 0x01) || (padValue > blockSize)) {
-    return -1;
-  }
+	if (input == null) { // this can happen if input is really a padded buffer
+		return 0;
+	}
+	
+	if (!Buffer.isBuffer(input)) {
+		input = new Buffer(input);
+	}
+	
+	var len = input.length;
+	var lastByte = input[len - 1];
+	var padValue = lastByte & 0x0ff;
+	
+	if ((padValue < 0x01) || (padValue > blockSize)) {
+		return -1;
+	}
 
-  var start = len - (lastByte & 0x0ff);
+	var start = len - (lastByte & 0x0ff);
 
-  for (var i = 0; i < (lastByte & 0x0ff); i++) {
-    if (input[start+i] != lastByte) {
-      return -1;
-    }
-  }
-  
-  return start;
+	for (var i = 0; i < (lastByte & 0x0ff); i++) {
+		if (input[start+i] != lastByte) {
+			return -1;
+		}
+	}
+	
+	return start;
 }
 
 /**
@@ -80,9 +80,9 @@ exports.unpad = function (input) {
  * @return the length of the padding
  */
 exports.padLength = function (input) {
-  if (!Buffer.isBuffer(input)) {
-    input = new Buffer(input);
-  }
-  var paddingOctet = blockSize - input.length % blockSize;
-  return paddingOctet;
+	if (!Buffer.isBuffer(input)) {
+		input = new Buffer(input);
+	}
+	var paddingOctet = blockSize - input.length % blockSize;
+	return paddingOctet;
 }
