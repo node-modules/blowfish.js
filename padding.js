@@ -45,7 +45,7 @@ exports.padWithLen = function (input, off, len) {
  * not properly padded
  */
 exports.unpad = function (input) {
-  if ((input == null) || (len == 0)) { // this can happen if input is really a padded buffer
+  if (input == null) { // this can happen if input is really a padded buffer
     return 0;
   }
   
@@ -68,7 +68,7 @@ exports.unpad = function (input) {
       return -1;
     }
   }
-
+  
   return start;
 }
 
