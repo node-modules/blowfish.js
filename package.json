@@ -1,14 +1,14 @@
 {
-  "name": "blowfish",
-  "version": "1.0.1",
+  "name": "xs-blowfish",
+  "version": "2.0.0",
   "description": "Blowfish encryption in JavaScript",
   "main": "blowfish.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/innoying/blowfish.js.git"
+    "url": "https://github.com/node-modules/blowfish.js"
   },
   "keywords": [
     "blowfish",
@@ -19,6 +19,13 @@
   "author": "Luke Young",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/innoying/blowfish.js/issues"
+    "url": "https://github.com/node-modules/blowfish.js/issues"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": ">=1.2.1",
+    "pedding": "*",
+    "jscover": "*",
+    "benchmark": "*"
   }
 }
