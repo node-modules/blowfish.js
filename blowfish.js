@@ -14,7 +14,7 @@
  it under the terms of the Universal General Public License (UGPL).
  http://aam.ugpl.de/?q=ugpl
 */
-var Padding = require('./padding');
+var Padding = require('./lib/padding');
 
 function Blowfish(k){
 	if (k.length==0) throw "0 length key";
